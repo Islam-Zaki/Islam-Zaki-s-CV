@@ -37,19 +37,19 @@ export const Skills = () => {
                         <p>Equipped with a diverse technical toolkit developed through academic training and real-world projects.<br></br> Skilled in both front-end and back-end technologies with a focus on delivering efficient, scalable solutions.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <img src={meter1} alt="Image" />
+                                <img src={meter1} alt="pic" />
                                 <h5>Web Development</h5>
                             </div>
                             <div className="item">
-                                <img src={meter2} alt="Image" />
+                                <img src={meter2} alt="pic" />
                                 <h5>Machine Learning</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt="Image" />
+                                <img src={meter3} alt="pic" />
                                 <h5>Database Management</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt="Image" />
+                                <img src={meter3} alt="pic" />
                                 <h5>Version Control </h5>
                             </div>
                         </Carousel>
@@ -57,7 +57,7 @@ export const Skills = () => {
                 </div>
             </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+        <img className="background-image-left" src={colorSharp} alt="pic" />
     </section>
   )
 }
