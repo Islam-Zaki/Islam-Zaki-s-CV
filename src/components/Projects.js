@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import projImg1 from "../assets/img/project-img1.png";
@@ -8,17 +9,18 @@ import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
+  const [activeTab, setActiveTab] = useState("first"); 
 
   const projects = [
     {
       title: "Inventory Management System",
-      description: "wearhouse that helps you manage your stock",
+      description: "Warehouse that helps you manage your stock",
       imgUrl: projImg1,
       link: "https://inventorymanagementsystem-production-cafa.up.railway.app"
     },
     {
       title: "Frontend Movie App",
-      description: "website that helps you find movies",
+      description: "Website that helps you find movies",
       imgUrl: projImg2,
       link: "https://movie-hub-testo.netlify.app/"
     },
@@ -30,6 +32,12 @@ export const Projects = () => {
     },
   ];
 
+  // Define headers for each tab
+  const tabHeaders = {
+    first: "Projects",
+    second: "Experience"
+  };
+
   return (
     <section className="project" id="projects">
       <Container>
@@ -38,18 +46,20 @@ export const Projects = () => {
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
-                <h2>Projects</h2>
+                {/* Dynamically update the header based on the active tab */}
+                <h2>{tabHeaders[activeTab]}</h2>
                 <p>Below are web development projects that reflect my practical experience with front-end and back-end technologies. They demonstrate my ability to build functional, user-oriented applications using modern web frameworks and tools.</p>
-                <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                <Tab.Container
+                  id="projects-tabs"
+                  defaultActiveKey="first"
+                  onSelect={(selectedKey) => setActiveTab(selectedKey)} // Update active tab on selection
+                >
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Tab 1</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -61,17 +71,18 @@ export const Projects = () => {
                               <ProjectCard
                                 key={index}
                                 {...project}
-                                />
+                              />
                             )
                           })
                         }
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <p>
+                        During my time at the Information Technology Institute (ITI), I deepened my expertise in full-stack development using Python, Django, and modern front-end tools.
+                        I also interned at Swft, where I worked closely with senior engineers, assisted in debugging, and optimized code for better performance.
+                        These experiences sharpened both my technical and team collaboration skills.
+                      </p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
